@@ -1,0 +1,42 @@
+<!--View Information-->
+<!--View name : NEWS Feed-->
+<!--State name : app.newsFeed-->
+<!--URL : #app/newsFeed-->
+
+<ion-view title="Blogs">
+    <!--news feed section-->
+    <ion-content id="news-feed-content" class="blog-feed-content">
+         <center>
+      <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
+     </center>
+        <div class="news-item" ng-click="BlogDetail('app.newsFeedDetail',blog.id)" ng-repeat="blog in blogs">
+
+            <!--header section-->
+            <div class="row header">
+                <div class="col-100">
+                    <img src="img/blog1.jpg" ng-if="blog.featured_image==null">
+                    <img src="{{blog.featured_image}}" ng-if="blog.featured_image!=null">
+                </div>
+                
+            </div><!--end header section-->
+
+            <!--detail section-->
+            <div class="row detail">
+                <div class="col">
+                    <h1>
+                       {{blog.title}}
+                    </h1>
+                    <h5>{{blog.created_at | date:'dd MMM yyyy'}}</h5>
+
+                    <p class="content" ng-bind-html="blog.description">
+                        {{blog.description}}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    <div class="row"></div>
+    </ion-content><!--end news feed section-->
+
+   
+</ion-view>

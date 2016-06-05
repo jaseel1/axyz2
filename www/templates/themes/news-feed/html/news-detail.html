@@ -1,0 +1,48 @@
+<!--View Information-->
+<!--View name : NEWS Feed-->
+<!--State name : app.newsFeed-->
+<!--URL : #app/newsFeed-->
+
+<ion-view title="{{item.title}}">
+<ion-nav-buttons side="left">
+       <a ng-click="OnBackButton()" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons>
+    <!--news feed section-->
+    <ion-content id="news-feed-content" class="blog-feed-content">
+
+        <div class="news-item">
+
+            <!--header section-->
+            <div class="row header">
+                <div class="col-100">
+                    <img src="img/blog1.jpg" ng-if="item.featured_image==null">
+                    <img src="{{item.featured_image}}" ng-if="item.featured_image!=null">
+                </div>
+                
+            </div><!--end header section-->
+
+            <!--detail section-->
+            <div class="row detail">
+                <div class="col">
+                    <h1>
+                        <big>{{item.title}}</big>
+                    </h1>
+                    <h5>{{item.created_at | date:'dd MMM yyyy'}}</h5>
+
+                    <p class="content" ng-bind-html="item.description">
+                       {{item.description}}
+                    </p>
+
+                </div>
+            </div>
+
+
+        </div>
+        
+        <div class="row"></div>
+    </ion-content><!--end news feed section-->
+
+   
+</ion-view>

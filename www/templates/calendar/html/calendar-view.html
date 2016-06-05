@@ -1,0 +1,131 @@
+<!--View Information-->
+<!--View name : Note Detail-->
+<!--Controller name : noteDetailCtrl-->
+<!--Controller path : www/templates/application-storage/local-application-db/js/controllers.js-->
+<!--State name : app.notedetail-->
+<!--URL : #app/notedetail-->
+<ion-view view-title="">
+  <!--left button on navigation bar-->
+  
+  <ion-nav-buttons side="left"> <a ng-click="OnBackButton()" class="button back-button buttons  button-clear header-item nav-back-btn"> <i class="ion-android-arrow-back"></i> </a> </ion-nav-buttons>
+  <!--end left button on navigation bar-->
+  <ion-nav-buttons side="right">
+    <div class="buttons buttons-right custom-nav-btns">
+      <md-menu md-position-mode="target-right target" class="md-list-item-md-menu-right"> <span ng-click="$mdOpenMenu()">
+        <md-icon md-menu-origin md-svg-icon="more"></md-icon>
+        </span>
+        <md-menu-content width="1">
+          <md-menu-item> <a class="md-button md-default-theme" ng-click="deleteCalnder(item.id)"> <span class="menu-item-button">Delete</span> </a> </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </ion-nav-buttons>
+  <!--    <md-toolbar class="bar-subheader md-tall md-primary toolbar-medium md-default-theme">
+        <div class="calenderdetail-title">
+            <h1><span class="color-yellow">Nullam pellentesque diam elit, in sodales ligula lacinia</span></h1>
+        </div>
+        <a class="md-button md-accent md-fab fab-toolbar-medium" aria-label="Add">
+            <i class="icon-pencil"></i>
+        </a>
+    </md-toolbar>-->
+  <ion-content class="scroll-content ionic-scroll  has-header">
+    <div class="scroll detail-page" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+      <!--toolbar section-->
+      <md-toolbar class="bar-subheader md-tall md-primary toolbar-medium toolbar-in-content md-default-theme">
+        <div class="calenderdetail-title">
+          <h1><span class="color-yellow">{{item.title}}</span></h1>
+        </div>
+       </md-toolbar>
+      <!--end toolbar section-->
+      <div id="calander-detail-content">
+        <div class="div-priority">
+        <small ng-if="item.priority=='1'"><i class="icon-diamond color-red"></i> high priority</small>
+        <small ng-if="item.priority=='0'"><i class="icon-diamond color-green"></i> normal priority</small>
+        <small ng-if="item.priority=='2'"><i class="icon-diamond color-blue"></i> low priority</small>
+        </div>
+        <div class="calander-main-holder">
+          <div class="row menu-item">
+            <div class="col-20">
+              <center>
+                <i class="icon-clock"></i>
+              </center>
+            </div>
+            <div class="col-80">
+              <p class="header">{{item.end | date:'EEE'}}, {{item.end | date:'MMM'}} {{item.end | date:'dd'}}</p>
+              <p class="detail">{{item.start | date:'hh:mm a'}}-{{item.end | date:'hh:mm a'}}</p>
+            </div>
+          </div>
+          
+          <div class="row menu-item">
+            <div class="col-20">
+              <center>
+                <i class="icon-pointer"></i>
+              </center>
+            </div>
+            <div class="col-80">
+              <p class="header">{{item.location}}<small class="color-yellow">view on map</small></p>
+            </div>
+          </div>
+          
+          <div class="row menu-item">
+            <div class="col-20">
+              <center>
+                <i class="icon-bell"></i>
+              </center>
+            </div>
+            <div class="col-80">
+              <p class="header">2 days before</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <!--end content section-->
+    </div>
+  </ion-content>
+   <div class="footer-fab-bar">
+        <a class="md-button md-accent md-fab fab-footer" ng-click="updateCalander('app.calendarupdate')" aria-label="Add">
+            <i class="icon-pencil"></i>
+        </a>
+    </div>
+  <!--calender detail section-->
+  <!--end calender detail section-->
+  <!--angular template section-->
+  <script type="text/ng-template" id="contract-actions-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Note Actions</h1>
+            <!--list section-->
+            <md-list>
+               <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="saveNote(note,$event)">
+                        <i class="ion-android-list"></i>
+                        <span>Save Note</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item ng-show="actionDelete">
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="deleteNote(note,$event)">
+                        <i class="ion-android-delete"></i>
+                        <span>Remove Note</span>
+                    </a>
+                </md-list-item>
+            </md-list>
+            <!--end list section-->
+        </md-bottom-sheet>
+    </script>
+  <!--end angular template section-->
+</ion-view>
+
+<style>
+  a.md-button.md-accent.md-raised, a.md-button.md-accent.md-fab, .md-button.md-accent.md-raised, .md-button.md-accent.md-fab{
+    color: rgb(255,255,255);
+    background-color:#ebab21;
+}
+a.md-button.md-accent.md-raised:not([disabled]):hover, a.md-button.md-accent.md-fab:not([disabled]):hover, .md-button.md-accent.md-raised:not([disabled]):hover, .md-button.md-accent.md-fab:not([disabled]):hover{
+    color: rgb(255,255,255);
+    background-color:#ebab21;
+}
+</style>

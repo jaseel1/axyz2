@@ -1,0 +1,146 @@
+<!--View Information-->
+<!--View name : Note Detail-->
+<!--Controller name : noteDetailCtrl-->
+<!--Controller path : www/templates/application-storage/local-application-db/js/controllers.js-->
+<!--State name : app.notedetail-->
+<!--URL : #app/notedetail-->
+
+<ion-view view-title="">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="OnBackButton()" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+    <ion-nav-buttons side="right">
+       
+        <div class="buttons buttons-right custom-nav-btns">
+        <span class="right-buttons">
+        <form name="noteForm" ng-submit="addMeetings(meetingData)">
+        <button type="submit" class="md-icon-button ion-nav-button-right md-button md-default-theme" aria-label="Setting" tabindex="0">
+            {{noteTxt}}
+        </button> </span>
+        <!--<md-menu md-position-mode="target-right target" class="md-list-item-md-menu-right">
+                <span ng-click="$mdOpenMenu()">
+                    <md-icon md-menu-origin md-svg-icon="more"></md-icon>
+                </span>
+                <md-menu-content width="1">
+                    <md-menu-item>
+                        <a class="md-button md-default-theme" ng-click="doSomeThing()">
+                            <span class="menu-item-button">Delete</span>
+                        </a>
+                    </md-menu-item>
+                   
+                </md-menu-content>
+            </md-menu>-->
+   </div>
+    </ion-nav-buttons>
+  
+    <!--note detail section-->
+    
+        <ion-content class="scroll-content ionic-scroll  has-header">
+        <div class="scroll detail-page" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+        <md-toolbar class="bar-subheader md-primary toolbar-medium toolbar-in-content md-default-theme">
+        <div class="calenderdetail-title-field">
+          <div class="list list-inset">
+  <label class="item item-input">
+    <input class="title-field" ng-model="meetingData.title" type="text" placeholder="Calender Title">
+  </label>
+</div>
+        </div></md-toolbar>
+            <div id="calander-detail-content">
+        <div class="calander-main-holder field-holder">
+          
+<div class="list list-inset">
+  <label class="item item-input">
+    <i class="icon-clock"></i>
+    <input type="text" id="date-format" ng-click="loadDate()"  placeholder="Select date & time (dd/mm/yyyy H:m:a)" ng-model="meetingData.enddate">
+  </label>
+</div>
+<div class="list list-inset">
+  <label class="item item-input">
+    <i class="icon-pointer"></i>
+    <input type="text" placeholder="Location" ng-model="meetingData.location">
+  </label>
+</div> 
+<div class="list list-inset add-notifications">
+
+  <label class="item-input">
+  <i class="icon-bell"></i>
+    <select ng-model="meetingData.remainder_type">
+      <option value="1">No Notification</option>
+      <option value="2">At time of event</option>
+      <option value="3">10 minutes before</option>
+      <option selected="selected" value="4">30 minutes before</option>
+    </select>
+    
+  </label>
+</div>
+<div class="list list-inset add-notifications">
+
+  <label class="item-input">
+  <i class="icon-diamond"></i>
+   <select ng-model="meetingData.priority" placeholder="prority">
+      <option selected value="0">Normal</option>
+      <option value="1">High</option>
+      <option value="2">Low</option>
+    </select>
+    
+  </label>
+</div>
+
+
+<div class="list list-inset">
+  <label class="item item-input">
+    <i class="icon-users"></i>
+    <input type="text" placeholder="Short description" ng-model="meetingData.description">
+  </label>
+</div>
+            
+        </div>
+        
+      </div><!--end content section-->
+      </div>
+        </ion-content>
+    </form><!--end note detail section-->
+
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="contract-actions-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Note Actions</h1>
+            <!--list section-->
+            <md-list>
+               <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="saveNote(note,$event)">
+                        <i class="ion-android-list"></i>
+                        <span>Save Note</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item ng-show="actionDelete">
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="deleteNote(note,$event)">
+                        <i class="ion-android-delete"></i>
+                        <span>Remove Note</span>
+                    </a>
+                </md-list-item>
+            </md-list>
+            <!--end list section-->
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+
+</ion-view>
+
+<style>
+  a.md-button.md-accent.md-raised, a.md-button.md-accent.md-fab, .md-button.md-accent.md-raised, .md-button.md-accent.md-fab{
+    color: rgb(255,255,255);
+    background-color:#ebab21;
+}
+a.md-button.md-accent.md-raised:not([disabled]):hover, a.md-button.md-accent.md-fab:not([disabled]):hover, .md-button.md-accent.md-raised:not([disabled]):hover, .md-button.md-accent.md-fab:not([disabled]):hover{
+    color: rgb(255,255,255);
+    background-color:#ebab21;
+}
+</style>

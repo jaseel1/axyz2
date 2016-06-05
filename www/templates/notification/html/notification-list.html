@@ -1,0 +1,148 @@
+<!--View Information-->
+<!--View name : Expense Dashboard-->
+<!--Controller name : expenseDashboardCtrl-->
+<!--Controller path : www/templates/themes/expense-dashboard/js/controllers.js-->
+<!--State name : app.expense-->
+<!--URL : #app/expense-->
+
+<ion-view title="Notification">
+
+    <!--right button on navigation bar-->
+    <ion-nav-buttons side="right">
+        <!--<md-button class="md-icon-button ion-nav-button-right" ng-click="goToSetting()"
+                   aria-label="Setting">
+            <i class="ion-android-more-vertical"></i>
+        </md-button>-->
+    </ion-nav-buttons> <!--end right button on navigation bar-->
+
+    <!--expense toolbar section-->
+   
+    <!--expense content section-->
+    <ion-content class="all-list-content">
+          <center>
+                <div ng-show="loading">LOADING..</div>
+            </center>
+        <!--Below code it will disable animation to better performance-->
+        <div ng-if="!isAnimated" class="list-expense-menu">
+            <div class="list-expense-menu-item" ng-repeat="notification in notifications">
+                <div class="row">
+                    <div class="col-20">
+                        <center><p class="list-date color-orange">{{notification.notif_date| date:'dd'}}</p>
+                        <p class="list-month">{{notification.notif_date| date:'MMMM'}}</p></center>
+                    </div>
+                    <div class="col-80 notification">
+                        <p class="header">{{notification.text}}</p>
+                        <p class="detail">{{notification.notif_date| date:'hh:mm a'}}</p>
+                    </div>
+                </div>
+            </div>
+            
+           
+           
+
+        <!--Below code it will show animation when selecting row.-->
+        <md-list ng-if="isAnimated">
+            <md-list-item class="row" ng-click="navigateTo('')">
+                <div class="col-20">
+                    <center>
+                    <p class="list-date color-orange">08</p>
+                    <p class="list-month">Feb</p>
+                    </center>
+                </div>
+                <div class="col-80 notification">
+                   <p class="header">Uctor ut ante vitae viverr</p>
+                   <p class="detail">12:00pm</p>
+                   
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+
+            <md-list-item class="row visited" ng-click="doSomeThing()">
+                <div class="col-20">
+                    <center><p class="list-date color-orange">06</p>
+                        <p class="list-month">Feb</p></center>
+                </div>
+                <div class="col-80 notification">
+                   <p class="header">Maecenas auctor ut ante vitae viverra</p>
+                        <p class="detail">10:00am</p>
+                        <div class="actions-flot">
+                         <md-menu md-position-mode="target-right target" class="md-list-item-md-menu-right">
+                <p ng-click="$mdOpenMenu()">
+                    <md-icon md-menu-origin md-svg-icon="more"></md-icon>
+                </p>
+                <md-menu-content width="1">
+                    <md-menu-item>
+                        <a class="md-button md-default-theme" ng-click="doSomeThing()">
+                            <span class="menu-item-button">Mark as unread</span>
+                        </a>
+                    </md-menu-item>
+                    
+                </md-menu-content>
+            </md-menu>
+                        </div>
+                        
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+
+            <md-list-item class="row" ng-click="doSomeThing()">
+                <div class="col-20">
+                    <center><p class="list-date color-orange">04</p>
+                        <p class="list-month">Feb</p></center>
+                </div>
+                <div class="col-80 notification">
+                    <p class="header">Nullam pellentesque diam elit, in sodales ligula lacinia...</p>
+                        <p class="detail">4:30pm</p>
+                       
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+
+            <md-list-item class="row visited" ng-click="doSomeThing()">
+                <div class="col-20">
+                    <center><p class="list-date color-orange">02</p>
+                        <p class="list-month">Feb</p></center>
+                </div>
+                <div class="col-80 notification">
+                  <p class="header">Maecenas vel velit et ipsum maximus volutpat vel</p>
+                  <p class="detail">02:00pm</p>
+                  <div class="actions-flot">
+                         <md-menu md-position-mode="target-right target" class="md-list-item-md-menu-right">
+                <p ng-click="$mdOpenMenu()">
+                    <md-icon md-menu-origin md-svg-icon="more"></md-icon>
+                </p>
+                <md-menu-content width="1">
+                    <md-menu-item>
+                        <a class="md-button md-default-theme" ng-click="doSomeThing()">
+                            <span class="menu-item-button">Mark as unread</span>
+                        </a>
+                    </md-menu-item>
+                    
+                </md-menu-content>
+            </md-menu>
+                        </div>
+                       
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+
+        </md-list>
+    </ion-content><!--end expense content section-->
+    <!--<div class="footer-fab-bar">
+        <a class="md-button md-accent md-fab fab-footer" ng-click="navigateTo('app.notesupdate')" aria-label="Add">
+            <i class="ion-android-add"></i>
+        </a>
+    </div>-->
+</ion-view>
+
+<style>
+ .bar.bar-balanced .title{ color:#f58024; }
+ a.md-button.md-accent.md-raised, a.md-button.md-accent.md-fab, .md-button.md-accent.md-raised, .md-button.md-accent.md-fab {
+    color: rgb(255,255,255);
+    background-color:#f58024;
+}
+a.md-button.md-accent.md-raised:not([disabled]):hover, a.md-button.md-accent.md-fab:not([disabled]):hover, .md-button.md-accent.md-raised:not([disabled]):hover, .md-button.md-accent.md-fab:not([disabled]):hover{
+    color: rgb(255,255,255);
+    background-color:#f58024;
+}
+</style>

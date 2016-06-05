@@ -1,0 +1,104 @@
+<!--View Information-->
+<!--View name : Device Image Picker-->
+<!--Controller name : imagePickerCtrl-->
+<!--Controller path : www/templates/hardware-connect/image-picker/js/controllers.js-->
+<!--State name : app.imagePicker-->
+<!--URL : #app/imagePicker-->
+
+<ion-view view-title="">
+    <!--toolbar section-->
+    <md-toolbar class="bar-subheader md-tall md-primary toolbar-medium">
+        <div class="profile-name">
+        
+            <h1>{{profile.name}}</h1>
+            <h5>{{profile.email}}</h5>
+            <a class=""
+           ng-click="showListBottomSheet($event)"
+           aria-label="showListBottomSheet">
+            <div class="profilepic">
+            <!--<i class="icon-camera"></i>-->
+            <img class="user-img" src="{{profile.profile_pic}}">
+            </div>
+              </a>
+        </div>
+        
+            
+      
+    </md-toolbar> <!--end toolbar section-->
+
+    <!--image picker section-->
+    <ion-content id="image-picker-content">
+        <!--list section-->
+        <md-list>
+            <md-card ng-repeat="image in imageList">
+                <img ng-src="{{image}}" class="md-card-image" alt="image{{$index+1}}">
+                <md-card-content>
+                    <h2 class="md-title">Image {{$index+1}}</h2>
+                </md-card-content>
+            </md-card>
+        </md-list>  <!--end list section-->
+        
+        <div class="profile-view">
+         
+         <div class="profile-listing">
+          <h5>Name</h5>
+           {{profile.name}}
+          <h5>Address</h5>
+            {{profile.street_address}}
+          <h5>State</h5>
+           {{profile.state}}
+          <h5>Country</h5>
+           {{profile.country}}
+          <h5>Phone Number</h5>
+           {{profile.phone}}
+          <h5>Mobile</h5>
+          {{profile.mobile}}
+          <h5>Web Address</h5>
+          {{profile.website}}
+          <h5>Email Address</h5>
+            {{profile.email}}
+          <h5>Change profile Pic</h5>
+           <h4 ng-show="loading">Uploading..</h4>
+          <input type="file" class="" id="profile_img" style="color:transparent;">
+         </div>
+        </div>
+    </ion-content><!--end image picker section-->
+<div class="footer-fab-bar">
+        <a class="md-button md-accent md-fab fab-footer" ng-click="navigateTo('app.editprofile')" aria-label="Add">
+            <i class="icon-pencil"></i>
+        </a>
+    </div>
+    <!--angular template section-->
+    <script type="text/ng-template" id="image-picker-actions-template">
+        <md-bottom-sheet class="md-list md-has-header image-pick">
+            
+            <!--list section-->
+            <md-list>
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="selectImage(1)">
+                        <i class="icon-camera"></i>
+                        <span>Take a photo</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="selectImage(9999)">
+                        <i class="icon-picture"></i>
+                        <span>Select from gallery</span>
+                    </a>
+                </md-list-item>
+				
+				<md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="selectImage(9999)">
+                        <i class="icon-trash"></i>
+                        <span>Remove photo</span>
+                    </a>
+                </md-list-item>
+            </md-list><!--end list section-->
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+
+</ion-view>

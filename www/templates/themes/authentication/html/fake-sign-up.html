@@ -1,0 +1,85 @@
+<!--View Information-->
+<!--View name : Fake Sign Up-->
+<!--State name : app.fakeSignUp-->
+<!--URL : #app/fakeSignUp-->
+
+
+<ion-view title="Material Design">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <!--social sign up section-->
+    <ion-content id="social-sign-up-content" class="bg-login-reg">
+    <form ng-submit="doRegister(regData)">
+        <div class="app-icon">
+            <img src="img/app_icon.png" class="md-card-image">
+        </div>
+        <div class="login-reg-holder">
+        <!--input section-->
+        <label class="item item-input item-stacked-label">
+    <span class="input-label">Name</span>
+    <input type="text" placeholder="John" ng-model="regData.name">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Address</span>
+    <textarea placeholder="Type address here" ng-model="regData.address"></textarea>
+  </label>
+   <label class="item item-input item-stacked-label">
+    <span class="input-label">State</span>
+    <input type="text" placeholder="State" ng-model="regData.state">
+  </label>
+ <label class="item item-input item-stacked-label">
+    <p class="input-label">Country</p>
+    <select ng-model="regData.country">
+      <option>India</option>
+      <option selected>United Staes of America</option>
+      <option>UAE</option>
+    </select>
+  </label>
+        <label class="item item-input item-stacked-label">
+    <span class="input-label">Phone Number</span>
+    <input type="text" placeholder="Number" ng-model="regData.phone">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Mobile Number</span>
+    <input type="text" placeholder="Number" ng-model="regData.mobile">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Web Address</span>
+    <input type="text" placeholder="url" ng-model="regData.website">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Email Address</span>
+    <input type="text" placeholder="email" ng-model="regData.email">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Password</span>
+    <input type="password" placeholder="....." ng-model="regData.password">
+  </label>
+        <md-checkbox aria-label="CheckboxTerms">
+            I accept terms and conditions.
+        </md-checkbox>
+        <!--end input section-->
+        </div>
+        <button type="submit" class="md-raised md-button md-default-theme login-reg-button">{{regTxt}}</button>  <a href="" class="md-raised md-button md-default-theme material-background">Cancel</a> 
+       
+       <div ng-click="forgotPassword()" class="md-actions" layout="row" layout-align="center center">
+                    <span class="color-white newuser-link">existing user?</span>
+                </div>
+       </form>
+    </ion-content><!--end social sign up section-->
+</ion-view>
+
+<style>
+.pane, .view{ background-color:#272f3c;}
+.bar.bar-balanced {
+	display:none;
+}
+.has-header {
+	top:0;
+}
+</style>

@@ -1,0 +1,188 @@
+<!--View Information-->
+<!--View name : Menu-->
+<!--Controller name : menuCtrl-->
+<!--Controller path : www/templates/menu/js/controllers.js-->
+<!--State name : app-->
+<!--URL : #app-->
+
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-balanced  material-background-nav-bar">
+            <ion-nav-buttons side="left">
+                <a class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="toggleLeft()"></a>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <md-sidenav md-component-id="left" on-swipe-left="closeSideNav()" on-drag-left="closeSideNav()">
+        <!--menu section-->
+        <div class="material-background" id="toggle-menu-left-header">
+            <!--menu header section-->
+            <div class="menu-left-header" ng-click="navigateTo('app.profileview')">
+                <img class="user-img" src="{{profile.profile_pic}}">
+                <p>
+                    <span class="title">{{profile.name}}</span>
+                    <br/>
+                    <span class="sub-title">{{profile.email}}</span>
+                </p>
+            </div><!--end menu header section-->
+        </div> <!--menu content section-->
+        <ion-content id="toggle-menu-left-content">
+
+            <!--If device is android application will present below code.-->
+            <!--It will disable animation to better performance on android.-->
+            <!--list section-->
+            <div ng-if="isAndroid" class="menu-list">
+                <div class="row menu-item"  ng-click="navigateTo('app.menuDashboard')">
+                    <div class="col-10">
+                        <i class="icon-home color-red"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Home</span>
+                    </div>
+                    </div>
+
+
+                    <div class="row menu-item" ng-show="showOthers"  ng-click="navigateTo('app.newsFeed')">
+                    <div class="col-10">
+                        <i class="icon-notebook color-oceangreen"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Blog</span>
+                    </div>
+                    </div>
+                    
+                    <div class="row menu-item" ng-show="showOthers"  ng-click="navigateTo('app.calendarlist')">
+                    <div class="col-10">
+                        <i class="icon-calendar color-yellow"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Calendar</span>
+                    </div>
+                    </div>
+                    
+                  <!--  <div class="row menu-item" ng-show="showOthers"  ng-click="navigateTo('app.contractlist')">
+                    <div class="col-10">
+                        <i class="icon-users color-orange"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Attendence</span>
+                    </div>
+                    </div>-->
+                    
+                   <!-- <div class="row menu-item" ng-show="showOthers"  ng-click="navigateTo('app.contractlist')">
+                    <div class="col-10">
+                        <i class="icon-support color-green"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Support</span>
+                    </div>
+                    </div>-->
+                    
+                    <div class="row menu-item" ng-show="showOthers"  ng-click="navigateTo('app.todolist')">
+                    <div class="col-10">
+                        <i class="icon-list color-blue"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>To Do</span>
+                    </div>
+                    </div>
+                    <div class="row menu-item" ng-show="showOthers"  ng-click="navigateTo('app.noteslist')">
+                    <div class="col-10">
+                        <i class="icon-note color-grey"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Notes</span>
+                    </div>
+                    </div>
+                    <div class="row menu-item" ng-show="showOthers"  ng-click="navigateTo('app.notificationlist')">
+                    <div class="col-10">
+                        <i class="icon-bell color-orange"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Notification</span>
+                    </div>
+                    </div>
+                    <div class="row menu-item" ng-show="showAuth"  ng-click="navigateTo('app.fakeLogin')">
+                    <div class="col-10">
+                        <i class="icon-lock-open color-red"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Login</span>
+                    </div>
+                    </div>
+                    <div class="row menu-item" ng-show="showAuth"  ng-click="navigateTo('app.fakeSignUp')">
+                    <div class="col-10">
+                        <i class="icon-user-follow color-red"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Register</span>
+                    </div>
+                    </div>
+                    <div class="row menu-item" ng-show="showOthers"  ng-click="logout()">
+                    <div class="col-10">
+                        <i class="icon-user-follow color-red"></i>
+                    </div>
+                    <div class="col-90">
+                        <span>Logout</span>
+                    </div>
+                    </div>
+                
+                
+            </div>
+
+
+            <!--If device is not Android application will present below code.-->
+            <!--It will show animation when selecting row.-->
+            <md-list ng-if="!isAndroid">
+            <md-list-item class="menu-list-item" ng-click="navigateTo('app.menuDashboard')">
+                    <i class="icon-home color-red"></i>
+                    <span>Home</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.newsFeed')">
+                    <i class="icon-notebook color-oceangreen"></i>
+                    <span>Blog</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.calendarlist')">
+                    <i class="icon-calendar color-yellow"></i>
+                    <span>Calender</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.contractlist')">
+                    <i class="icon-users color-orange"></i>
+                    <span>Attendence</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.contractlist')">
+                    <i class="icon-support color-green"></i>
+                    <span>Support</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.todolist')">
+                    <i class="icon-list color-blue"></i>
+                    <span>To Do</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.noteslist')">
+                    <i class="icon-note color-grey"></i>
+                    <span>Note</span>
+                </md-list-item>
+                
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.notificationlist')">
+                    <i class="icon-bell color-orange"></i>
+                    <span>Notification</span>
+                </md-list-item>
+
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.fakeLogin')">
+                    <i class="icon-lock-open color-red"></i>
+                    <span>Login</span>
+                </md-list-item>
+
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.fakeSignUp')">
+                    <i class="icon-user-follow color-red"></i>
+                    <span>Register</span>
+                </md-list-item>
+                
+            </md-list>
+            <!--end list section-->
+        </ion-content><!--end menu content section-->
+        <!--end menu section-->
+
+    </md-sidenav>
+</ion-side-menus>

@@ -1,0 +1,79 @@
+<!--View Information-->
+<!--View name : Expense Dashboard-->
+<!--Controller name : expenseDashboardCtrl-->
+<!--Controller path : www/templates/themes/expense-dashboard/js/controllers.js-->
+<!--State name : app.expense-->
+<!--URL : #app/expense-->
+
+<ion-view title="Notes">
+
+    <!--right button on navigation bar-->
+    <ion-nav-buttons side="right">
+        <!--<md-button class="md-icon-button ion-nav-button-right" ng-click="goToSetting()"
+                   aria-label="Setting">
+            <i class="ion-android-more-vertical"></i>
+        </md-button>-->
+    </ion-nav-buttons> <!--end right button on navigation bar-->
+
+    <!--expense toolbar section-->
+   
+    <!--expense content section-->
+    <ion-content class="all-list-content">
+
+        <!--Below code it will disable animation to better performance-->
+        <div ng-if="!isAnimated" class="list-expense-menu" >
+            <div class="list-expense-menu-item" ng-click="noteDetails('app.notesdetail',$index)" ng-repeat="note in notes">
+                <div class="row">
+                    <div class="col-20">
+                        <center><p class="list-date color-grey"></p>
+                        <p class="list-month">Feb</p></center>
+                    </div>
+                    <div class="col-80 menu">
+                        <p class="header note-head">{{note.title}}</p>
+                        <p class="detail">{{note.date}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Below code it will show animation when selecting row.-->
+        <md-list ng-if="isAnimated">
+            <center>
+                <div ng-show="loading">LOADING..</div>
+            </center>
+            <div ng-repeat="note in notes">
+            <md-list-item class="row" ng-click="noteDetails('app.notesdetail',$index)" >
+                <div class="col-20">
+                    <center>
+                    <p class="list-date color-grey">{{note.date | date:'dd'}}</p>
+                    <p class="list-month">{{note.date | date:'MMM'}}</p>
+                    </center>
+                </div>
+                <div class="col-80 menu">
+                   <p class="header note-head">{{note.title}}</p>
+                   <p class="detail">{{note.date | date:'hh:mm a'}} 
+                   </p>
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+            </div>
+        </md-list>
+    </ion-content><!--end expense content section-->
+    <div class="footer-fab-bar">
+        <a class="md-button md-accent md-fab fab-footer" ng-click="navigateTo('app.addnote')" aria-label="Add">
+            <i class="ion-android-add"></i>
+        </a>
+    </div>
+</ion-view>
+
+<style>
+ .bar.bar-balanced .title{ color:#7d8085; }
+ a.md-button.md-accent.md-raised, a.md-button.md-accent.md-fab, .md-button.md-accent.md-raised, .md-button.md-accent.md-fab {
+    color: rgb(255,255,255);
+    background-color:#7d8085;
+}
+a.md-button.md-accent.md-raised:not([disabled]):hover, a.md-button.md-accent.md-fab:not([disabled]):hover, .md-button.md-accent.md-raised:not([disabled]):hover, .md-button.md-accent.md-fab:not([disabled]):hover{
+    color: rgb(255,255,255);
+    background-color:#7d8085;
+}
+</style>

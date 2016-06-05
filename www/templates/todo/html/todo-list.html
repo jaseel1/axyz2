@@ -1,0 +1,81 @@
+<!--View Information-->
+<!--View name : Expense Dashboard-->
+<!--Controller name : expenseDashboardCtrl-->
+<!--Controller path : www/templates/themes/expense-dashboard/js/controllers.js-->
+<!--State name : app.expense-->
+<!--URL : #app/expense-->
+
+<ion-view title="To Do" >
+
+
+
+    <!--right button on navigation bar-->
+    <ion-nav-buttons side="right">
+        <!--<md-button class="md-icon-button ion-nav-button-right" ng-click="goToSetting()"
+                   aria-label="Setting">
+            <i class="ion-android-more-vertical"></i>
+        </md-button>-->
+    </ion-nav-buttons> <!--end right button on navigation bar-->
+
+
+
+    <!--expense toolbar section-->
+
+    <!--expense content section-->
+    <ion-content class="all-list-content">
+
+        <!--Below code it will disable animation to better performance-->
+        <div class="list-expense-menu">
+            <div class="list-expense-menu-item" ng-repeat="todo in todos">
+                <div class="row todo-list">
+                    <div class="col-10 text-strick">
+                        <md-checkbox aria-label="Checkbox" ng-model="ch" ng-change="changeText(ch)" ></md-checkbox>
+                    </div>
+                    <div class="col-80" ng-class="{'text-strick':ch == true}">
+                        <p class="header">{{todo.note}}</p>
+                        <p class="detail">{{todo.create_date | date:'dd MMM yyyy'}}</p>
+                        <div class="actions-flot">
+                         <md-menu md-position-mode="target-right target" class="md-list-item-md-menu-right">
+                <p ng-click="$mdOpenMenu()">
+                    <md-icon md-menu-origin md-svg-icon="more"></md-icon>
+                </p>
+                <md-menu-content width="1">
+                    <md-menu-item>
+                        <a class="md-button md-default-theme" ng-click="editNote($index)">
+                            <span class="menu-item-button">Edit</span>
+                        </a>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <a class="md-button md-default-theme" ng-click="deleteTodo(todo.to_do_id,$index)">
+                            <span class="menu-item-button">Delete</span>
+                        </a>
+                    </md-menu-item>
+
+                </md-menu-content>
+            </md-menu>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content><!--end expense content section-->
+    <div class="footer-fab-bar">
+        <a class="md-button md-accent md-fab fab-footer" ng-click="navigateTo('app.tododetail')" aria-label="Add">
+            <i class="ion-android-add"></i>
+        </a>
+    </div>
+</ion-view>
+
+<style>
+ .bar.bar-balanced .title{ color:#56b1d3;}
+ a.md-button.md-accent.md-raised, a.md-button.md-accent.md-fab, .md-button.md-accent.md-raised, .md-button.md-accent.md-fab {
+    color: rgb(255,255,255);
+    background-color:#56b1d3;
+}
+a.md-button.md-accent.md-raised:not([disabled]):hover, a.md-button.md-accent.md-fab:not([disabled]):hover, .md-button.md-accent.md-raised:not([disabled]):hover, .md-button.md-accent.md-fab:not([disabled]):hover{
+    color: rgb(255,255,255);
+   background-color:#56b1d3;
+}
+</style>

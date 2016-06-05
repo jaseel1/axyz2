@@ -1,0 +1,71 @@
+<!--View Information-->
+<!--View name : Menu Dashboard-->
+<!--Controller name : menuDashboardCtrl-->
+<!--Controller path : www/templates/themes/menu-dashboard/js/controllers.js-->
+<!--State name : app.menuDashboard-->
+<!--URL : #app/menuDashboard-->
+
+<ion-view title="{{displayTitle}}" class="has-header">
+
+    <!--menu dashboard section-->
+    <ion-content id="menu-dashboard-content">
+        <!--panel section-->
+        <div class="menu-panel">
+            <div class="row">
+                <div class="col-50 dashboard-blog" ng-click="navigateTo('app.newsFeed')">
+                    <i class="icon-notebook"></i>
+                   <p>Blogs</p>
+                    <big>{{dashboard.blogs.total_count}}</big><br />
+                    <span><span ng-show="loading">Loading..</span>{{dashboard.blogs.title}}</span><br />
+                    {{dashboard.blogs.date | date:'dd MMM yyyy'}}
+                </div>
+                <div class="col-50 dashboard-calender" ng-click="navigateTo('app.calendarlist')">
+                    <i class="icon-calendar"></i>
+                    <p>Calender</p>
+                    <big>{{dashboard.calander.total_count}}</big><br />
+                    <span><span ng-show="loading">Loading..</span>{{dashboard.calander.title}}</span><br />
+                     {{dashboard.calander.from_date | date:'hh:mm a'}} -
+                    {{dashboard.calander.end_date | date:'hh:mm a'}}
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-50 dashboard-todo" ng-click="navigateTo('app.todolist')">
+                    <i class="icon-list"></i>
+                    <p>To Do</p>
+                    <big>{{dashboard.todo.total_count}}</big><br />
+                    <span><span ng-show="loading">Loading..</span>{{dashboard.todo.title}}</span><br />
+                    {{dashboard.todo.date | date:'dd MMM yyyy'}}
+                </div>
+                <div class="col-50 dashboard-note" ng-click="navigateTo('app.noteslist')">
+                    <i class="icon-note"></i>
+                    <p>Note</p>
+                    <big>{{dashboard.notes.total_count}}</big><br />
+                    <span><span ng-show="loading">Loading..</span>{{dashboard.notes.title}}</span><br />
+                    {{dashboard.notes.date | date:'dd MMM yyyy'}} 
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-50 dashboard-notifications" ng-click="navigateTo('app.notificationlist')">
+                    <i class="icon-bell"></i>
+                    <p>Notifications</p>
+                    <big>{{dashboard.notifications.total_count}}</big><br />
+                    <span><span ng-show="loading">Loading..</span>{{dashboard.notifications.title}}</span><br />
+                    {{dashboard.notifications.date| date:'dd MMM yyyy'}} 
+                </div>
+                
+                <div class="col-50 dashboard-support" ng-click="showToast('Updated soon')">
+                    <i class="icon-support"></i>
+                    <p>Support</p>
+                    <big>{{dashboard.support.total_count}}</big><br />
+                    <span><span ng-show="loading">Loading..</span>{{dashboard.support.title}}</span><br />
+                    {{dashboard.support.date | date:'dd MMM yyyy'}}
+                </div>
+                
+                
+            </div>
+        </div><!--end panel section-->
+        
+    </ion-content><!--Menu dashboard section-->
+</ion-view>
